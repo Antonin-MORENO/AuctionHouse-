@@ -1,4 +1,4 @@
-package AuctionHouse;
+package AuctionHouse.src;
 
 public class furniture {
      // Instance variable
