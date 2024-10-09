@@ -2,15 +2,15 @@ package AuctionHouse.src;
 
 import java.util.ArrayList;
 
-public class furniturelist {
-    private ArrayList <furniture> FurnitureList;
+public class Furniturelist {
+    private ArrayList <Furniture> FurnitureList;
 
-    public furniturelist(){
+    public Furniturelist(){
         FurnitureList = new ArrayList<>();
     }
 
     // add a furniture to the lost of furniture
-    public void addFurniture(furniture item) {
+    public void addFurniture(Furniture item) {
         FurnitureList.add(item);
     }
 
@@ -20,11 +20,11 @@ public class furniturelist {
     }
 
     // get the oldest furniture in the list
-    public furniture getOldestItem() {
+    public Furniture getOldestItem() {
         if (FurnitureList.isEmpty()) return null;
 
-        furniture oldest = FurnitureList.get(0);
-        for (furniture item : FurnitureList) {
+        Furniture oldest = FurnitureList.get(0);
+        for (Furniture item : FurnitureList) {
             if (item.get_yearsoforigins() < oldest.get_yearsoforigins()) {
                 oldest = item;
             }
@@ -33,11 +33,11 @@ public class furniturelist {
     }
 
     // get the newest furniture in the list 
-    public furniture getNewestItem() {
+    public Furniture getNewestItem() {
         if (FurnitureList.isEmpty()) return null;
 
-        furniture newest = FurnitureList.get(0);
-        for (furniture item : FurnitureList) {
+        Furniture newest = FurnitureList.get(0);
+        for (Furniture item : FurnitureList) {
             if (item.get_yearsoforigins() > newest.get_yearsoforigins()) {
                 newest = item;
             }
@@ -46,11 +46,11 @@ public class furniturelist {
     }
 
     // get the most exepensive furniture in the list
-    public furniture getMostExpensiveItem() {
+    public Furniture getMostExpensiveItem() {
         if (FurnitureList.isEmpty()) return null;
 
-        furniture mostExpensive = FurnitureList.get(0);
-        for (furniture item : FurnitureList) {
+        Furniture mostExpensive = FurnitureList.get(0);
+        for (Furniture item : FurnitureList) {
             if (item.get_startingprice() > mostExpensive.get_startingprice()) {
                 mostExpensive = item;
             }
@@ -59,11 +59,11 @@ public class furniturelist {
     }
 
     // get the least expensive furniture in the list  
-    public furniture getLeastExpensiveItem() {
+    public Furniture getLeastExpensiveItem() {
         if (FurnitureList.isEmpty()) return null;
 
-        furniture leastExpensive = FurnitureList.get(0);
-        for (furniture item : FurnitureList) {
+        Furniture leastExpensive = FurnitureList.get(0);
+        for (Furniture item : FurnitureList) {
             if (item.get_startingprice() < leastExpensive.get_startingprice()) {
                 leastExpensive = item;
             }

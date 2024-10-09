@@ -1,6 +1,6 @@
 package AuctionHouse.src;
 
-public class furniture {
+public class Furniture {
      // Instance variable
 
   private static int idcounter = 0; 
@@ -18,7 +18,7 @@ public class furniture {
   private double starting_price;
 
 
-  public furniture(String object_type, String style, String maker_name, double lenght, double height, double depth, int year_of_origins, String owner_name, String condition, double starting_price) {
+  public Furniture(String object_type, String style, String maker_name, double lenght, double height, double depth, int year_of_origins, String owner_name, String condition, double starting_price) {
     
     this.id = ++idcounter;
     this.object_type = object_type;
