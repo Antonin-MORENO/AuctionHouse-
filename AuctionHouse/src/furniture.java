@@ -3,6 +3,9 @@ package AuctionHouse.src;
 public class furniture {
      // Instance variable
 
+  private static int idcounter = 0; 
+  private int id; 
+
   private String object_type;
   private String style;
   private String maker_name;
@@ -16,6 +19,8 @@ public class furniture {
 
 
   public furniture(String object_type, String style, String maker_name, double lenght, double height, double depth, int year_of_origins, String owner_name, String condition, double starting_price) {
+    
+    this.id = ++idcounter;
     this.object_type = object_type;
     this.style = style;
     this.maker_name = maker_name;
@@ -26,6 +31,10 @@ public class furniture {
     this.owner_name = owner_name;
     this.condition = condition;
     this.starting_price = starting_price;
+  }
+
+  public int get_id(){
+    return id;
   }
 
   public String get_type() {
