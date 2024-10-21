@@ -3,11 +3,10 @@ package AuctionHouse.src;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
-import java.util.ArrayList;
 
 public class Loadfile {
     
-    public static void loadFurnitureFromFile(String filePath, ArrayList<Furniture> furnitureList) {
+    public static void loadFurnitureFromFile(String filePath, Furniturelist furnitureList) {
 
         
         try {
@@ -35,7 +34,7 @@ public class Loadfile {
 
                 Furniture furniture = new Furniture(objectType, style, makerName, length, height, depth, year, ownerName, condition, price);
 
-                furnitureList.add(furniture);
+                furnitureList.addFurniture(furniture);
 
                 
             }
