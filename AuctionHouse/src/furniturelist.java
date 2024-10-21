@@ -82,8 +82,23 @@ public class Furniturelist {
             fw.write("Furniture Inventory Statistics:\n");
             // Total number of items
             fw.write("Total items: " + get_TotalItem() + "\n");
-    
-            // Oldest 
+
+            // Newest item
+            Furniture newest = getNewestItem();
+            fw.write("Newest item : " + newest.get_type() + " from " + newest.get_yearsoforigins() + " id : " + newest.get_id()+ "\n");
+            
+            // Oldest item
+            Furniture oldest = getOldestItem();
+            fw.write("Oldest item : " + oldest.get_type() + " from " + oldest.get_yearsoforigins() + " id : " + oldest.get_id()+ "\n");
+
+            // Most expensive
+            Furniture mostexpensive = getMostExpensiveItem();
+            fw.write("Most expensive furniture : " + mostexpensive.get_type() + " which costs " + mostexpensive.get_startingprice() + "€, id : " + mostexpensive.get_id()+ "\n");
+
+            // Least expensive
+            Furniture leastexpensive = getLeastExpensiveItem();
+            fw.write("Least expensive furniture : " + leastexpensive.get_type() + " which costs " + leastexpensive.get_startingprice() + "€, id : " + leastexpensive.get_id()+ "\n");
+
             fw.close();
 
 
