@@ -1,6 +1,9 @@
 package AuctionHouse.src;
 
 import java.util.ArrayList;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Furniturelist {
     private ArrayList <Furniture> FurnitureList;
@@ -72,5 +75,30 @@ public class Furniturelist {
     }
 
 
-}
+    public void generate_stat_text_file(String filename) {
+        FileWriter fw;
+        try {       
+            fw = new FileWriter(filename);
+            fw.write("Furniture Inventory Statistics:\n");
+            // Total number of items
+            fw.write("Total items: " + get_TotalItem() + "\n");
+    
+            // Oldest 
+            fw.close();
 
+
+        }
+        //message and stop if file not found
+        catch (FileNotFoundException fnf){
+            System.out.println(filename + " not found ");
+            System.exit(0);
+    
+        }
+        //stack trace here because we don't expect to come here
+        catch (IOException ioe){
+            ioe.printStackTrace(); //goes to standard output
+            System.exit(1);
+        }
+    }
+
+}
