@@ -27,5 +27,15 @@ public class Main {
         System.out.println("Most expensive furniture item: " + list.getMostExpensiveItem().get_type() + " with starting price $" + list.getMostExpensiveItem().get_startingprice());
 
         System.out.println("Least expensive furniture item: " + list.getLeastExpensiveItem().get_type() + " with starting price $" + list.getLeastExpensiveItem().get_startingprice());
+                
+        Furniturelist furnitureList = new Furniturelist();
+        
+        String filepath = "C:\\Users\\anton\\OneDrive\\Documents\\heriotwatt\\software\\coursework\\AuctionHouse\\src\\furniture_data.csv";
+        
+        Loadfile.loadFurnitureFromFile(filepath, furnitureList);
+
+        furnitureList.generate_stat_text_file("furniture_stats.txt");
+    
+    
     }
 }
