@@ -30,7 +30,7 @@ public class Main {
                 
         Furniturelist furnitureList = new Furniturelist();
         
-        String filepath = "C:\\Users\\anton\\OneDrive\\Documents\\heriotwatt\\software\\coursework\\AuctionHouse\\src\\furniture_data.csv";
+        String filepath = "C:\\Users\\anton\\OneDrive\\Documents\\heriotwatt\\software\\coursework\\AuctionHouse\\src\\furniture_data_missing_fields.csv";
         
         Loadfile.loadFurnitureFromFile(filepath, furnitureList);
 
