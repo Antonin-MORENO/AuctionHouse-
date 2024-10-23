@@ -16,10 +16,16 @@ public class Loadfile {
 
             while (scanner.hasNextLine()) {
 
-
+                
                 String inputLine = scanner.nextLine();
 
                 String[] fields = inputLine.split(",");
+
+                if (fields.length < 10) {
+                    System.err.println("Error: Missing fields in the input line: " + inputLine);
+                    System.exit(1);
+
+                }
 
                 String objectType = fields[0].trim();
                 String style = fields[1].trim();
