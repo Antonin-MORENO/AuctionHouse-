@@ -75,6 +75,17 @@ public class Furniturelist {
     }
 
 
+    public double calculateAverageStartingPrice() {
+        if (FurnitureList.isEmpty()) return 0.0;
+
+        double sum = 0;
+        for (Furniture item : FurnitureList) {
+            sum += item.get_startingprice();
+        }
+        return sum / FurnitureList.size();
+    }
+
+
     public void generate_stat_text_file(String filename) {
         FileWriter fw;
         try {       
@@ -99,7 +110,13 @@ public class Furniturelist {
             Furniture leastexpensive = getLeastExpensiveItem();
             fw.write("Least expensive furniture : " + leastexpensive.get_type() + " which costs " + leastexpensive.get_startingprice() + "€, id : " + leastexpensive.get_id()+ "\n");
 
+            // Average starting price
+            fw.write("Average starting price: " + calculateAverageStartingPrice() + "€\n");
+
             fw.close();
+
+
+
 
 
         }
