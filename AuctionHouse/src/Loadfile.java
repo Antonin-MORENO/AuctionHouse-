@@ -13,6 +13,7 @@ public class Loadfile {
 
             File f = new File(filePath);
             Scanner scanner = new Scanner(f);
+            String[] validConditions = { "Mint condition", "Restored", "Needs restoring", "Good condition" };
 
             while (scanner.hasNextLine()) {
 
@@ -26,7 +27,22 @@ public class Loadfile {
                     System.exit(1);
 
                 }
+                
+                String condition = fields[8].trim();
+                boolean isValidCondition = false;
 
+                for (String validCondition : validConditions) {
+                    if (validCondition.equals(condition)) {
+                        isValidCondition = true;
+                        break;
+                    }
+                }
+
+                if (!isValidCondition) {
+                    System.err.println("Error: Invalid condition in the input line: " + inputLine);
+                    System.exit(1); 
+                }
+                
                 String objectType = fields[0].trim();
                 String style = fields[1].trim();
                 String makerName = fields[2].trim();
@@ -35,7 +51,6 @@ public class Loadfile {
                 double depth = Double.parseDouble(fields[5].trim());
                 int year = Integer.parseInt(fields[6].trim());
                 String ownerName = fields[7].trim();
-                String condition = fields[8].trim();
                 double price = Double.parseDouble(fields[9].trim());
 
                 Furniture furniture = new Furniture(objectType, style, makerName, length, height, depth, year, ownerName, condition, price);
