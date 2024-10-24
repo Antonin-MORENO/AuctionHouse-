@@ -86,6 +86,22 @@ public class Furniturelist {
     }
 
 
+
+    public double calculateStandardDeviation() {
+        if (FurnitureList.isEmpty()) return 0.0;
+
+        double average = calculateAverageStartingPrice();
+        double sumSquaredDifferences = 0.0;
+
+        for (Furniture item : FurnitureList) {
+            double priceDifference = item.get_startingprice() - average;
+            sumSquaredDifferences += priceDifference * priceDifference;
+        }
+
+        return Math.sqrt(sumSquaredDifferences / FurnitureList.size());
+    }
+
+
     public void generate_stat_text_file(String filename) {
         FileWriter fw;
         try {       
@@ -112,6 +128,10 @@ public class Furniturelist {
 
             // Average starting price
             fw.write("Average starting price: " + calculateAverageStartingPrice() + "€\n");
+
+
+            // Standard deviation of starting price
+            fw.write("Standard deviation of starting price: " + calculateStandardDeviation() + "€\n");
 
             fw.close();
 
