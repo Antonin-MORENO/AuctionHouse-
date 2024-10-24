@@ -100,6 +100,8 @@ public class Furniturelist {
 
         return Math.sqrt(sumSquaredDifferences / FurnitureList.size());
     }
+    
+    
 
 
     public void generate_stat_text_file(String filename) {
@@ -132,6 +134,33 @@ public class Furniturelist {
 
             // Standard deviation of starting price
             fw.write("Standard deviation of starting price: " + calculateStandardDeviation() + "€\n");
+
+            int mintConditionCount = 0;
+            int restoredCount = 0;
+            int needsRestoringCount = 0;
+            int goodConditionCount = 0;
+
+            for (Furniture item : FurnitureList) {
+                String condition = item.get_condition();
+                
+                if (condition.equals("Mint condition")) { // Correction de "condtion" à "condition"
+                    mintConditionCount++;
+                } else if (condition.equals("Restored")) {
+                    restoredCount++;
+                } else if (condition.equals("Needs restoring")) {
+                    needsRestoringCount++;
+                } else if (condition.equals("Good condition")) {
+                    goodConditionCount++;
+                }
+            }
+
+            
+            fw.write("Breakdown of Furniture items by condition:\n");
+            fw.write("Mint: " + mintConditionCount);
+            fw.write("\nRestored: " + restoredCount);
+            fw.write("\nNeeds Restoring: " + needsRestoringCount);
+            fw.write("\nGoods condition : " + goodConditionCount);
+
 
             fw.close();
 
