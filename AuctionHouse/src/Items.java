@@ -1,3 +1,4 @@
+package AuctionHouse.src;
 
 
 public abstract class Items {
@@ -23,6 +24,24 @@ public abstract class Items {
         this.starting_price = starting_price;
     }
 
+    public int get_id(){
+        return id;
+    }
     
+    public int get_yearsoforigins() {
+        return year_of_origins;
+    }
+
+    public String get_ownername() {
+        return owner_name;
+    }
+
+    public String get_condition() {
+        return condition;
+    }
+
+    public double get_startingprice() {
+        return starting_price;
+    }
     
 }
