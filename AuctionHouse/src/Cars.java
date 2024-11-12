@@ -15,5 +15,15 @@ public class Cars extends Items {
 
     }
     
-    
+    public String get_make(){
+        return make;
+    }
+
+    public String get_model(){
+        return model;
+    }
+
+    public boolean get_serviced(){
+        return serviced;
+    }
 }
