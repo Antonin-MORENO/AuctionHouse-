@@ -17,5 +17,20 @@ public class Books extends Items {
         this.genre = genre;
 
     }
+
+    public String get_title(){
+        return title;
+    }
     
+    public String get_authorname(){
+        return authorname;
+    }
+
+    public String get_edition(){
+        return edition;
+    }
+
+    public String get_genre(){
+        return genre;
+    }
 }
