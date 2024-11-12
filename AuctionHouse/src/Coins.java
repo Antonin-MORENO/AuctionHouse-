@@ -16,8 +16,19 @@ public class Coins extends Items {
         this.value = value;
     }
 
+    public String get_material(){
+        return material;
+    }
 
-    
+    public String get_PlaceOfOrigins(){
+        return PlaceOfOrigins;
+    }
+
+    public String get_value(){
+        return value;
+    }
+
+
 
 
     
