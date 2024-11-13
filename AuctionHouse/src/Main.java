@@ -3,7 +3,7 @@ package AuctionHouse.src;
 public class Main {
     public static void main(String[] args) {
         // Create an instance of furniturelist
-        Furniturelist list = new Furniturelist();
+        ItemsList list = new ItemsList();
 
         // Create furniture objects
         Furniture chair = new Furniture("Chair", "Modern", "John Smith", 1.2, 0.8, 0.6, 2020, "Alice", "Mint condition", 150.0);
@@ -20,15 +20,15 @@ public class Main {
         // Query about the list
         System.out.println("Total furniture items in the list: " + list.get_TotalItem());
 
-        System.out.println("Oldest furniture item: " + list.getOldestItem().get_type() + " from " + list.getOldestItem().get_yearsoforigins());
+        System.out.println("Oldest furniture item: " + list.getOldestItem().get_id() + " from " + list.getOldestItem().get_yearsoforigins());
 
-        System.out.println("Newest furniture item: " + list.getNewestItem().get_type() + " from " + list.getNewestItem().get_yearsoforigins());
+        System.out.println("Newest furniture item: " + list.getNewestItem().get_id() + " from " + list.getNewestItem().get_yearsoforigins());
 
-        System.out.println("Most expensive furniture item: " + list.getMostExpensiveItem().get_type() + " with starting price $" + list.getMostExpensiveItem().get_startingprice());
+        System.out.println("Most expensive furniture item: " + list.getMostExpensiveItem().get_id() + " with starting price $" + list.getMostExpensiveItem().get_startingprice());
 
-        System.out.println("Least expensive furniture item: " + list.getLeastExpensiveItem().get_type() + " with starting price $" + list.getLeastExpensiveItem().get_startingprice());
+        System.out.println("Least expensive furniture item: " + list.getLeastExpensiveItem().get_id() + " with starting price $" + list.getLeastExpensiveItem().get_startingprice());
                 
-        Furniturelist furnitureList = new Furniturelist();
+        ItemsList furnitureList = new ItemsList();
         
         String filepath = "C:\\Users\\anton\\OneDrive\\Documents\\heriotwatt\\software\\coursework\\AuctionHouse\\src\\furniture_data_missing_fields.csv";
         

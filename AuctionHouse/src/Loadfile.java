@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Loadfile {
     
-    public static void loadFurnitureFromFile(String filePath, Furniturelist furnitureList) {
+    public static void loadFurnitureFromFile(String filePath, ItemsList furnitureList) {
 
         
         try {

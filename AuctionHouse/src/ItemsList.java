@@ -5,29 +5,29 @@ import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 
-public class Furniturelist {
-    private ArrayList <Furniture> FurnitureList;
+public class ItemsList {
+    private ArrayList <Items> ItemsList;
 
-    public Furniturelist(){
-        FurnitureList = new ArrayList<>();
+    public ItemsList(){
+        ItemsList = new ArrayList<>();
     }
 
     // add a furniture to the lost of furniture
-    public void addFurniture(Furniture item) {
-        FurnitureList.add(item);
+    public void addFurniture(Items item) {
+        ItemsList.add(item);
     }
 
     // get the total number of furniture in the list
     public int get_TotalItem() {
-        return FurnitureList.size();
+        return ItemsList.size();
     }
 
     // get the oldest furniture in the list
-    public Furniture getOldestItem() {
-        if (FurnitureList.isEmpty()) return null;
+    public Items getOldestItem() {
+        if (ItemsList.isEmpty()) return null;
 
-        Furniture oldest = FurnitureList.get(0);
-        for (Furniture item : FurnitureList) {
+        Items oldest = ItemsList.get(0);
+        for (Items item : ItemsList) {
             if (item.get_yearsoforigins() < oldest.get_yearsoforigins()) {
                 oldest = item;
             }
@@ -36,11 +36,11 @@ public class Furniturelist {
     }
 
     // get the newest furniture in the list 
-    public Furniture getNewestItem() {
-        if (FurnitureList.isEmpty()) return null;
+    public Items getNewestItem() {
+        if (ItemsList.isEmpty()) return null;
 
-        Furniture newest = FurnitureList.get(0);
-        for (Furniture item : FurnitureList) {
+        Items newest = ItemsList.get(0);
+        for (Items item : ItemsList) {
             if (item.get_yearsoforigins() > newest.get_yearsoforigins()) {
                 newest = item;
             }
@@ -49,11 +49,11 @@ public class Furniturelist {
     }
 
     // get the most exepensive furniture in the list
-    public Furniture getMostExpensiveItem() {
-        if (FurnitureList.isEmpty()) return null;
+    public Items getMostExpensiveItem() {
+        if (ItemsList.isEmpty()) return null;
 
-        Furniture mostExpensive = FurnitureList.get(0);
-        for (Furniture item : FurnitureList) {
+        Items mostExpensive = ItemsList.get(0);
+        for (Items item : ItemsList) {
             if (item.get_startingprice() > mostExpensive.get_startingprice()) {
                 mostExpensive = item;
             }
@@ -62,11 +62,11 @@ public class Furniturelist {
     }
 
     // get the least expensive furniture in the list  
-    public Furniture getLeastExpensiveItem() {
-        if (FurnitureList.isEmpty()) return null;
+    public Items getLeastExpensiveItem() {
+        if (ItemsList.isEmpty()) return null;
 
-        Furniture leastExpensive = FurnitureList.get(0);
-        for (Furniture item : FurnitureList) {
+        Items leastExpensive = ItemsList.get(0);
+        for (Items item : ItemsList) {
             if (item.get_startingprice() < leastExpensive.get_startingprice()) {
                 leastExpensive = item;
             }
@@ -76,29 +76,29 @@ public class Furniturelist {
 
 
     public double calculateAverageStartingPrice() {
-        if (FurnitureList.isEmpty()) return 0.0;
+        if (ItemsList.isEmpty()) return 0.0;
 
         double sum = 0;
-        for (Furniture item : FurnitureList) {
+        for (Items item : ItemsList) {
             sum += item.get_startingprice();
         }
-        return sum / FurnitureList.size();
+        return sum / ItemsList.size();
     }
 
 
 
     public double calculateStandardDeviation() {
-        if (FurnitureList.isEmpty()) return 0.0;
+        if (ItemsList.isEmpty()) return 0.0;
 
         double average = calculateAverageStartingPrice();
         double sumSquaredDifferences = 0.0;
 
-        for (Furniture item : FurnitureList) {
+        for (Items item : ItemsList) {
             double priceDifference = item.get_startingprice() - average;
             sumSquaredDifferences += priceDifference * priceDifference;
         }
 
-        return Math.sqrt(sumSquaredDifferences / FurnitureList.size());
+        return Math.sqrt(sumSquaredDifferences / ItemsList.size());
     }
     
     
@@ -113,20 +113,20 @@ public class Furniturelist {
             fw.write("Total items: " + get_TotalItem() + "\n");
 
             // Newest item
-            Furniture newest = getNewestItem();
-            fw.write("Newest item : " + newest.get_type() + " from " + newest.get_yearsoforigins() + " id : " + newest.get_id()+ "\n");
+            Items newest = getNewestItem();
+            fw.write("Newest item : " + newest.get_id() + " from " + newest.get_yearsoforigins() + " id : " + newest.get_id()+ "\n");
             
             // Oldest item
-            Furniture oldest = getOldestItem();
-            fw.write("Oldest item : " + oldest.get_type() + " from " + oldest.get_yearsoforigins() + " id : " + oldest.get_id()+ "\n");
+            Items oldest = getOldestItem();
+            fw.write("Oldest item : " + oldest.get_id() + " from " + oldest.get_yearsoforigins() + " id : " + oldest.get_id()+ "\n");
 
             // Most expensive
-            Furniture mostexpensive = getMostExpensiveItem();
-            fw.write("Most expensive furniture : " + mostexpensive.get_type() + " which costs " + mostexpensive.get_startingprice() + "€, id : " + mostexpensive.get_id()+ "\n");
+            Items mostexpensive = getMostExpensiveItem();
+            fw.write("Most expensive furniture : " + mostexpensive.get_id() + " which costs " + mostexpensive.get_startingprice() + "€, id : " + mostexpensive.get_id()+ "\n");
 
             // Least expensive
-            Furniture leastexpensive = getLeastExpensiveItem();
-            fw.write("Least expensive furniture : " + leastexpensive.get_type() + " which costs " + leastexpensive.get_startingprice() + "€, id : " + leastexpensive.get_id()+ "\n");
+            Items leastexpensive = getLeastExpensiveItem();
+            fw.write("Least expensive furniture : " + leastexpensive.get_id() + " which costs " + leastexpensive.get_startingprice() + "€, id : " + leastexpensive.get_id()+ "\n");
 
             // Average starting price
             fw.write("Average starting price: " + calculateAverageStartingPrice() + "€\n");
@@ -140,7 +140,7 @@ public class Furniturelist {
             int needsRestoringCount = 0;
             int goodConditionCount = 0;
 
-            for (Furniture item : FurnitureList) {
+            for (Items item : ItemsList) {
                 String condition = item.get_condition();
                 
                 if (condition.equals("Mint condition")) { // Correction de "condtion" à "condition"
