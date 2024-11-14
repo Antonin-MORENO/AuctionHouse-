@@ -14,7 +14,7 @@ public class Furniture extends Items{
 
 
 
-  public Furniture(String object_type, String style, String maker_name, double lenght, double height, double depth, int year_of_origins, String owner_name, String condition, double starting_price) {
+  public Furniture(String object_type, String style, String maker_name, double lenght, double height, double depth, YearEstimate year_of_origins, String owner_name, String condition, double starting_price) {
     super(owner_name, condition, year_of_origins, starting_price);
     this.object_type = object_type;
     this.style = style;
