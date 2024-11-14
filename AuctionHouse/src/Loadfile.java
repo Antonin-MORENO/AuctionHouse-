@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Loadfile {
     
-    public static void loadFurnitureFromFile(String filePath, ItemsList furnitureList) {
+    public static void loadFurnitureFromFile(String filePath, ItemsList itemsList) {
 
         
         try {
@@ -27,8 +27,8 @@ public class Loadfile {
                     System.exit(1);
 
                 }
-                
-                String condition = fields[8].trim();
+
+                String condition = fields[1].trim();
                 boolean isValidCondition = false;
 
                 for (String validCondition : validConditions) {
@@ -38,27 +38,91 @@ public class Loadfile {
                     }
                 }
 
+                    
                 if (!isValidCondition) {
                     System.err.println("Error: Invalid condition in the input line: " + inputLine);
                     System.exit(1); 
                 }
+
+                String objecttype = fields[0];
+
+                if (objecttype == "Furniture") {
+
+
+                    String furnitureType = fields[5].trim();
+                    String style = fields[6].trim();
+                    String makerName = fields[7].trim();
+                    double length = Double.parseDouble(fields[8].trim());
+                    double height = Double.parseDouble(fields[9].trim());
+                    double depth = Double.parseDouble(fields[10].trim());
+                    int year = Integer.parseInt(fields[2].trim());
+                    String ownerName = fields[3].trim();
+                    double price = Double.parseDouble(fields[4].trim());
+    
+                    Furniture furniture = new Furniture(furnitureType, style, makerName, length, height, depth, year, ownerName, condition, price);
+    
+                    itemsList.addFurniture(furniture);
+    
+                    
+                }
+
+
+                else if (objecttype == "Cars") {
+
+
+                    int year = Integer.parseInt(fields[2].trim());
+                    String ownerName = fields[3].trim();
+                    double price = Double.parseDouble(fields[4].trim());
+                    String make = fields[5].trim();
+                    String model = fields[6].trim();
+                    boolean serviced = Boolean.parseBoolean(fields[7].trim());
+
+                    Cars cars = new Cars(ownerName, condition, year, price, make, model, serviced);
+                    itemsList.addFurniture(cars);
+
+
+                }
+
+                else if (objecttype == "Books") {
+
+                    int year = Integer.parseInt(fields[2].trim());
+                    String ownerName = fields[3].trim();
+                    double price = Double.parseDouble(fields[4].trim());
+                    String title = fields[5].trim();
+                    String authorname = fields[6].trim();
+                    String edition = fields[7].trim();
+                    String genre = fields[8].trim();
+
+                    Books books = new Books(title, authorname, edition, genre, ownerName, condition, year, price);
+                    itemsList.addFurniture(books);
+                }
+
+
+                else if (objecttype == "Coins") {
+
+                    int year = Integer.parseInt(fields[2].trim());
+                    String ownerName = fields[3].trim();
+                    double price = Double.parseDouble(fields[4].trim());
+                    String material = fields[5].trim();
+                    String PlaceOfOrigins = fields[6].trim();
+                    String value = fields[7].trim();
+
+                    Coins coins = new Coins(material, PlaceOfOrigins, value, ownerName, condition, year, price);
+
+                    itemsList.addFurniture(coins);
+
+                }
+
+                else {
+                    System.err.println("Error: Invalid object in the input line: " + inputLine);
+                    System.exit(1); 
+                }
+
+                }
+
                 
-                String objectType = fields[0].trim();
-                String style = fields[1].trim();
-                String makerName = fields[2].trim();
-                double length = Double.parseDouble(fields[3].trim());
-                double height = Double.parseDouble(fields[4].trim());
-                double depth = Double.parseDouble(fields[5].trim());
-                int year = Integer.parseInt(fields[6].trim());
-                String ownerName = fields[7].trim();
-                double price = Double.parseDouble(fields[9].trim());
-
-                Furniture furniture = new Furniture(objectType, style, makerName, length, height, depth, year, ownerName, condition, price);
-
-                furnitureList.addFurniture(furniture);
-
                 
-            }
+
             scanner.close();
 
         } catch (FileNotFoundException e) {
