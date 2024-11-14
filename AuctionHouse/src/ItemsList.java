@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class ItemsList {
     private ArrayList <Items> ItemsList;
@@ -131,6 +133,25 @@ public Items getNewestItemMiddleEstimate() {
 
         return Math.sqrt(sumSquaredDifferences / ItemsList.size());
     }
+
+    public ArrayList<Items> getTop3ItemsByEstimateDifference() {
+        ArrayList<Items> sortedItems = new ArrayList<>(ItemsList);
+        
+       
+        Collections.sort(sortedItems, new Comparator<Items>() {
+            @Override
+            public int compare(Items item1, Items item2) {
+                double diff1 = item1.get_yearsoforigins().getHighEstimate() - item1.get_yearsoforigins().getLowEstimate();
+                double diff2 = item2.get_yearsoforigins().getHighEstimate() - item2.get_yearsoforigins().getLowEstimate();
+                return Double.compare(diff2, diff1); 
+            }
+        });
+        
+        
+        return new ArrayList<>(sortedItems.subList(0, Math.min(3, sortedItems.size())));
+    }
+
+    
     
     
 
@@ -179,7 +200,7 @@ public Items getNewestItemMiddleEstimate() {
             int mintConditionCount = 0;
             int restoredCount = 0;
             int needsRestoringCount = 0;
-            int goodConditionCount = 0;
+
 
             for (Items item : ItemsList) {
                 String condition = item.get_condition();
@@ -190,9 +211,7 @@ public Items getNewestItemMiddleEstimate() {
                     restoredCount++;
                 } else if (condition.equals("Needs restoring")) {
                     needsRestoringCount++;
-                } else if (condition.equals("Good condition")) {
-                    goodConditionCount++;
-                }
+                } 
             }
 
             
@@ -200,8 +219,14 @@ public Items getNewestItemMiddleEstimate() {
             fw.write("Mint: " + mintConditionCount);
             fw.write("\nRestored: " + restoredCount);
             fw.write("\nNeeds Restoring: " + needsRestoringCount);
-            fw.write("\nGoods condition : " + goodConditionCount);
-
+            
+            
+            fw.write("\nTop 3 items with the largest difference between high and low estimates:\n");
+            ArrayList<Items> top3Items = getTop3ItemsByEstimateDifference();
+            for (Items item : top3Items) {
+                double difference = item.get_yearsoforigins().getHighEstimate() - item.get_yearsoforigins().getLowEstimate();
+                fw.write("Item ID: " + item.get_id() + ", Difference: " + difference + "\n");
+            }
 
             fw.close();
 
