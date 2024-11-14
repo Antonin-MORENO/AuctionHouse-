@@ -1,0 +1,20 @@
+Furniture,Mint condition,2020,Clara,200,Desk,Vintage,MakerB,150,70,20
+Furniture,Mint condition,2020,Eve,400,Sofa,Classic,MakerA,150,30,60
+Furniture,Restored,2010,Alice,100,Sofa,Rustic,MakerC,50,90,40
+Furniture,Restored,1980,Clara,100,Wardrobe,Classic,MakerB,100,90,40
+Furniture,Needs restoring,2020,Bob,100,Desk,Vintage,MakerA,100,90,60
+Cars,Needs restoring,2015,John,20000,Chevrolet,SUV,No
+Cars,Needs restoring,1995,Max,15000,Ford,Sedan,No
+Cars,Mint condition,2015,John,10000,Ford,Truck,Yes
+Cars,Mint condition,2021,Max,20000,Honda,Truck,No
+Cars,Restored,2015,Nancy,10000,Toyota,Coupe,No
+Books,Needs restoring,1995,Chris,10,Moby Dick,Shakespeare,2,Drama
+Books,Mint condition,1970,Anna,50,Pride and Prejudice,Melville,4,Romance
+Books,Mint condition,2010,Ben,50,The Odyssey,Austen,4,Romance
+Books,Restored,1960,Chris,20,Pride and Prejudice,Shakespeare,4,Drama
+Books,Restored,1960,Sam,20,Hamlet,Shakespeare,3,Drama
+Coins,Needs restoring,1950,Tom,100,Bronze,Rome,30
+Coins,Needs restoring,1900,Leo,300,Gold,Rome,40
+Coins,Restored,2000,Leo,100,Gold,Rome,40
+Coins,Mint condition,1800,Jerry,300,Bronze,Tokyo,40
+Coins,Restored,1800,Daisy,300,Silver,London,10
