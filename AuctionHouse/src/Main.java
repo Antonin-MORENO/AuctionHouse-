@@ -6,16 +6,58 @@ public class Main {
         ItemsList list = new ItemsList();
 
         // Create furniture objects
-        Furniture chair = new Furniture("Chair", "Modern", "John Smith", 1.2, 0.8, 0.6, 2020, "Alice", "Mint condition", 150.0);
-        Furniture table = new Furniture("Table", "Victorian", "Emily Brown", 2.0, 1.0, 1.5, 1890, "Bob", "Restored", 1000.0);
-        Furniture sofa = new Furniture("Sofa", "Contemporary", "Jane Doe", 3.0, 1.5, 2.0, 2005, "Charlie", "Mint condition", 600.0);
-        Furniture bed = new Furniture("Bed", "Modern", "David Miller", 2.5, 1.2, 2.2, 1750, "David", "needs restoring", 2000.0);
+        Coins coin = new Coins(
+            "Gold", // material
+            "Rome", // PlaceOfOrigins
+            "10 aureus", // value
+            "Henry Long", // owner_name
+            "Mint condition", // condition
+            new YearEstimate(500, 600), // year_of_origins (exemple avec une année estimée)
+            200.0 // starting_price
+        );
+
+        // Création d'un objet Books
+        Books book = new Books(
+            "War and Peace", // title
+            "Leo Tolstoy", // authorname
+            "First Edition", // edition
+            "Novel", // genre
+            "David Gray", // owner_name
+            "Mint condition", // condition
+            new YearEstimate(1850, 1900), // year_of_origins
+            200.0 // starting_price
+        );
+
+        // Création d'un objet Cars
+        Cars car = new Cars(
+            "Robert Brown", // owner_name
+            "Mint condition", // condition
+            new YearEstimate(1965, 1970), // year_of_origins
+            15000.0, // starting_price
+            "Ford", // make
+            "Mustang", // model
+            true // serviced
+        );
+
+        // Création d'un objet Furniture
+        Furniture furniture = new Furniture(
+            "Chair", // object_type
+            "Victorian", // style
+            "Thomas Chippendale", // maker_name
+            45.0, // lenght
+            80.0, // height
+            50.0, // depth
+            new YearEstimate(1800, 1850), // year_of_origins
+            "John Doe", // owner_name
+            "Mint condition", // condition
+            1000.0 // starting_price
+        );
 
         // Add furniture items to the list
-        list.addFurniture(chair);
-        list.addFurniture(table);
-        list.addFurniture(sofa);
-        list.addFurniture(bed);
+        list.addFurniture(coin);
+        list.addFurniture(furniture);
+        list.addFurniture(car);
+        list.addFurniture(book);
 
         // Query about the list
         System.out.println("Total furniture items in the list: " + list.get_TotalItem());
@@ -30,7 +72,7 @@ public class Main {
                 
         ItemsList furnitureList = new ItemsList();
         
-        String filepath = "C:\\Users\\anton\\OneDrive\\Documents\\heriotwatt\\software\\coursework\\AuctionHouse\\src\\furniture_data_missing_fields.csv";
+        String filepath = "C:\\Users\\anton\\OneDrive\\Documents\\heriotwatt\\software\\coursework\\AuctionHouse\\src\\sample.csv";
         
         Loadfile.loadFurnitureFromFile(filepath, furnitureList);
 
