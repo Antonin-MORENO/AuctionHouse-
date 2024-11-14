@@ -8,7 +8,7 @@ public class Books extends Items {
     private String edition;
     private String genre;
 
-    public Books(String title, String authorname, String edition, String genre, String owner_name, String condition, int year_of_origins, double starting_price){
+    public Books(String title, String authorname, String edition, String genre, String owner_name, String condition, YearEstimate year_of_origins, double starting_price){
         super(owner_name, condition, year_of_origins, starting_price);
 
         this.title = title;
