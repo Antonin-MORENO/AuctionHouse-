@@ -49,7 +49,7 @@ public class Loadfile {
                 String ownerName = fields[3].trim();
                 double price = Double.parseDouble(fields[4].trim());
 
-                if (objecttype == "Furniture") {
+                if ("Furniture".equals(objecttype)) {
 
 
                     String furnitureType = fields[5].trim();
@@ -67,7 +67,7 @@ public class Loadfile {
                 }
 
 
-                else if (objecttype == "Cars") {
+                else if ("Cars".equals(objecttype)) {
 
                     String make = fields[5].trim();
                     String model = fields[6].trim();
@@ -79,7 +79,7 @@ public class Loadfile {
 
                 }
 
-                else if (objecttype == "Books") {
+                else if ("Books".equals(objecttype)) {
 
 
                     String title = fields[5].trim();
@@ -92,7 +92,7 @@ public class Loadfile {
                 }
 
 
-                else if (objecttype == "Coins") {
+                else if ("Coins".equals(objecttype)) {
 
 
                     String material = fields[5].trim();
