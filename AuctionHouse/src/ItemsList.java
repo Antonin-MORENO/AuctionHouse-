@@ -154,11 +154,11 @@ public Items getNewestItemMiddleEstimate() {
 
             // Newest item
             Items newestmiddle = getNewestItemMiddleEstimate();
-            fw.write("Newest item (High estimate) : " + newest.get_id() + " from " + newestmiddle.get_yearsoforigins().getMiddleEstimate() + " id : " + newestmiddle.get_id()+ "\n");
+            fw.write("Newest item (Middle estimate) : " + newest.get_id() + " from " + newestmiddle.get_yearsoforigins().getMiddleEstimate() + " id : " + newestmiddle.get_id()+ "\n");
             
             // Oldest item
             Items oldestmiddle = getOldestItemMiddleEstimate();
-            fw.write("Oldest item (Low estimate) : " + oldest.get_id() + " from " + oldestmiddle.get_yearsoforigins().getMiddleEstimate() + " id : " + oldestmiddle.get_id()+ "\n");
+            fw.write("Oldest item (Middle estimate) : " + oldest.get_id() + " from " + oldestmiddle.get_yearsoforigins().getMiddleEstimate() + " id : " + oldestmiddle.get_id()+ "\n");
 
 
             // Most expensive
