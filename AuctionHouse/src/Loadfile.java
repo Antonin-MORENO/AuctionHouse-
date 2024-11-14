@@ -45,6 +45,9 @@ public class Loadfile {
                 }
 
                 String objecttype = fields[0];
+                int year = Integer.parseInt(fields[2].trim());
+                String ownerName = fields[3].trim();
+                double price = Double.parseDouble(fields[4].trim());
 
                 if (objecttype == "Furniture") {
 
@@ -55,9 +58,6 @@ public class Loadfile {
                     double length = Double.parseDouble(fields[8].trim());
                     double height = Double.parseDouble(fields[9].trim());
                     double depth = Double.parseDouble(fields[10].trim());
-                    int year = Integer.parseInt(fields[2].trim());
-                    String ownerName = fields[3].trim();
-                    double price = Double.parseDouble(fields[4].trim());
     
                     Furniture furniture = new Furniture(furnitureType, style, makerName, length, height, depth, year, ownerName, condition, price);
     
@@ -69,10 +69,6 @@ public class Loadfile {
 
                 else if (objecttype == "Cars") {
 
-
-                    int year = Integer.parseInt(fields[2].trim());
-                    String ownerName = fields[3].trim();
-                    double price = Double.parseDouble(fields[4].trim());
                     String make = fields[5].trim();
                     String model = fields[6].trim();
                     boolean serviced = Boolean.parseBoolean(fields[7].trim());
@@ -85,9 +81,7 @@ public class Loadfile {
 
                 else if (objecttype == "Books") {
 
-                    int year = Integer.parseInt(fields[2].trim());
-                    String ownerName = fields[3].trim();
-                    double price = Double.parseDouble(fields[4].trim());
+
                     String title = fields[5].trim();
                     String authorname = fields[6].trim();
                     String edition = fields[7].trim();
@@ -100,9 +94,7 @@ public class Loadfile {
 
                 else if (objecttype == "Coins") {
 
-                    int year = Integer.parseInt(fields[2].trim());
-                    String ownerName = fields[3].trim();
-                    double price = Double.parseDouble(fields[4].trim());
+
                     String material = fields[5].trim();
                     String PlaceOfOrigins = fields[6].trim();
                     String value = fields[7].trim();
