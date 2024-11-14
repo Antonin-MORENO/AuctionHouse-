@@ -108,7 +108,7 @@ public class ItemsList {
         FileWriter fw;
         try {       
             fw = new FileWriter(filename);
-            fw.write("Furniture Inventory Statistics:\n");
+            fw.write("Items Inventory Statistics:\n");
             // Total number of items
             fw.write("Total items: " + get_TotalItem() + "\n");
 
@@ -143,7 +143,7 @@ public class ItemsList {
             for (Items item : ItemsList) {
                 String condition = item.get_condition();
                 
-                if (condition.equals("Mint condition")) { // Correction de "condtion" à "condition"
+                if (condition.equals("Mint condition")) {
                     mintConditionCount++;
                 } else if (condition.equals("Restored")) {
                     restoredCount++;
