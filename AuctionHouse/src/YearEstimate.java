@@ -18,7 +18,7 @@ public class YearEstimate {
     }
 
     public int getMiddleEstimate() {
-        return (lowEstimate + highEstimate) / 2;
+        return Math.round((lowEstimate + highEstimate) / 2.0f);
     }
 
     public int getDifference() {
