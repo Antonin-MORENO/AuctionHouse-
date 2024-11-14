@@ -7,7 +7,7 @@ public abstract class Items {
     protected static int idcounter = 0; 
     protected int id; 
 
-    protected int year_of_origins;
+    protected YearEstimate yearEstimate;
     protected String owner_name;
     protected String condition;
     protected double starting_price;
@@ -15,10 +15,10 @@ public abstract class Items {
 
     // Constructor 
 
-    public Items(String owner_name, String condition, int year_of_origins, double starting_price){
+    public Items(String owner_name, String condition, YearEstimate yearEstimate, double starting_price){
 
         this.id = ++idcounter;
-        this.year_of_origins = year_of_origins;
+        this.yearEstimate = yearEstimate;
         this.owner_name = owner_name;
         this.condition = condition;
         this.starting_price = starting_price;
@@ -28,8 +28,8 @@ public abstract class Items {
         return id;
     }
     
-    public int get_yearsoforigins() {
-        return year_of_origins;
+    public YearEstimate get_yearsoforigins() {
+        return yearEstimate;
     }
 
     public String get_ownername() {
