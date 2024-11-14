@@ -22,31 +22,62 @@ public class ItemsList {
         return ItemsList.size();
     }
 
+
+
     // get the oldest furniture in the list
     public Items getOldestItem() {
         if (ItemsList.isEmpty()) return null;
-
+    
         Items oldest = ItemsList.get(0);
         for (Items item : ItemsList) {
-            if (item.get_yearsoforigins() < oldest.get_yearsoforigins()) {
+            if (item.get_yearsoforigins().getLowEstimate() < oldest.get_yearsoforigins().getLowEstimate()) {
                 oldest = item;
             }
         }
         return oldest;
     }
+    
 
     // get the newest furniture in the list 
     public Items getNewestItem() {
         if (ItemsList.isEmpty()) return null;
-
+    
         Items newest = ItemsList.get(0);
         for (Items item : ItemsList) {
-            if (item.get_yearsoforigins() > newest.get_yearsoforigins()) {
+            if (item.get_yearsoforigins().getHighEstimate() > newest.get_yearsoforigins().getHighEstimate()) {
                 newest = item;
             }
         }
         return newest;
     }
+
+
+
+    // Get the oldest item by middle estimate
+public Items getOldestItemMiddleEstimate() {
+    if (ItemsList.isEmpty()) return null;
+
+    Items oldest = ItemsList.get(0);
+    for (Items item : ItemsList) {
+        if (item.get_yearsoforigins().getMiddleEstimate() < oldest.get_yearsoforigins().getMiddleEstimate()) {
+            oldest = item;
+        }
+    }
+    return oldest;
+}
+
+// Get the newest item by middle estimate
+public Items getNewestItemMiddleEstimate() {
+    if (ItemsList.isEmpty()) return null;
+
+    Items newest = ItemsList.get(0);
+    for (Items item : ItemsList) {
+        if (item.get_yearsoforigins().getMiddleEstimate() > newest.get_yearsoforigins().getMiddleEstimate()) {
+            newest = item;
+        }
+    }
+    return newest;
+}
 
     // get the most exepensive furniture in the list
     public Items getMostExpensiveItem() {
@@ -114,11 +145,21 @@ public class ItemsList {
 
             // Newest item
             Items newest = getNewestItem();
-            fw.write("Newest item : " + newest.get_id() + " from " + newest.get_yearsoforigins() + " id : " + newest.get_id()+ "\n");
+            fw.write("Newest item (High estimate) : " + newest.get_id() + " from " + newest.get_yearsoforigins().getHighEstimate() + " id : " + newest.get_id()+ "\n");
             
             // Oldest item
             Items oldest = getOldestItem();
-            fw.write("Oldest item : " + oldest.get_id() + " from " + oldest.get_yearsoforigins() + " id : " + oldest.get_id()+ "\n");
+            fw.write("Oldest item (Low estimate) : " + oldest.get_id() + " from " + oldest.get_yearsoforigins().getLowEstimate() + " id : " + oldest.get_id()+ "\n");
+
+
+            // Newest item
+            Items newestmiddle = getNewestItemMiddleEstimate();
+            fw.write("Newest item (High estimate) : " + newest.get_id() + " from " + newestmiddle.get_yearsoforigins().getMiddleEstimate() + " id : " + newestmiddle.get_id()+ "\n");
+            
+            // Oldest item
+            Items oldestmiddle = getOldestItemMiddleEstimate();
+            fw.write("Oldest item (Low estimate) : " + oldest.get_id() + " from " + oldestmiddle.get_yearsoforigins().getMiddleEstimate() + " id : " + oldestmiddle.get_id()+ "\n");
+
 
             // Most expensive
             Items mostexpensive = getMostExpensiveItem();
