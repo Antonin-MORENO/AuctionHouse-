@@ -51,7 +51,41 @@ public class GUI extends JFrame {
                 editSelectedItem();
             }
         });
+        
+        createMenuBar();
     }
+
+
+
+        // Create a menu bar for sorting options
+        private void createMenuBar() {
+            JMenuBar menuBar = new JMenuBar();
+            JMenu sortMenu = new JMenu("Sort");
+    
+            // Sort by Price
+            JMenuItem sortByPrice = new JMenuItem("By Price");
+            sortByPrice.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    sortItemsByPrice();
+                }
+            });
+    
+            // Sort by Year Estimate
+            JMenuItem sortByYear = new JMenuItem("By Year Estimate");
+            sortByYear.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    sortItemsByYear();
+                }
+            });
+    
+            sortMenu.add(sortByPrice);
+            sortMenu.add(sortByYear);
+            menuBar.add(sortMenu);
+    
+            setJMenuBar(menuBar);
+        }
 
     // Method to populate the list with items
     public void setListContent(ArrayList<Items> items) {
