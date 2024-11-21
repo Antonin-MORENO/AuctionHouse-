@@ -35,11 +35,18 @@ public class GUI extends JFrame {
         buttonPanel.add(editButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
-        // Add action listener to More Info button
+        // Add action listener to buttons
         moreInfoButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 showMoreInfo();
+            }
+        });
+        
+        editButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                editSelectedItem();
             }
         });
     }
@@ -75,6 +82,51 @@ public class GUI extends JFrame {
             );
 
             JOptionPane.showMessageDialog(this, details, "Item Details", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select an item first.", "No Selection", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
+
+    // Method to edit the selected item's price and condition
+    private void editSelectedItem() {
+        int selectedIndex = inventoryList.getSelectedIndex();
+        if (selectedIndex >= 0) {
+            // Retrieve the selected item
+            Items selectedItem = itemsList.getAllItems().get(selectedIndex);
+
+            // Prompt for new price
+            String newPriceStr = JOptionPane.showInputDialog(this, "Enter new price:", selectedItem.get_startingprice());
+            if (newPriceStr == null) return; // Cancel if input is null
+
+            // Validate and update price
+            try {
+                double newPrice = Double.parseDouble(newPriceStr);
+                selectedItem.set_price(newPrice);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid price format.", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+
+            // Prompt for new condition from predefined choices
+            String[] validConditions = {"Mint condition", "Restored", "Needs restoring"};
+            String newCondition = (String) JOptionPane.showInputDialog(
+                    this,
+                    "Select new condition:",
+                    "Edit Condition",
+                    JOptionPane.PLAIN_MESSAGE,
+                    null,
+                    validConditions,
+                    selectedItem.get_condition()
+            );
+
+            // Check if user canceled
+            if (newCondition != null) {
+                selectedItem.set_condition(newCondition);
+
+                // Refresh the list content
+                setListContent(itemsList.getAllItems());
+            }
         } else {
             JOptionPane.showMessageDialog(this, "Please select an item first.", "No Selection", JOptionPane.WARNING_MESSAGE);
         }
