@@ -12,6 +12,7 @@ public class GUI extends JFrame {
     private JList<String> inventoryList;
     private JButton moreInfoButton;
     private JButton editButton;
+    private JButton generateStatsButton;
     private ItemsList itemsList; 
 
     public GUI(String title, ItemsList itemsList) {
@@ -32,9 +33,12 @@ public class GUI extends JFrame {
         // Add Buttons
         moreInfoButton = new JButton("More Info");
         editButton =  new JButton("Edit");
+        generateStatsButton = new JButton("Generate Statistics");
         JPanel buttonPanel = new JPanel();
+        buttonPanel.add(generateStatsButton);
         buttonPanel.add(moreInfoButton);
         buttonPanel.add(editButton);
+
         add(buttonPanel, BorderLayout.SOUTH);
 
         // Add action listener to buttons
@@ -53,6 +57,8 @@ public class GUI extends JFrame {
         });
         
         createMenuBar();
+
+
     }
 
 
