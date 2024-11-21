@@ -55,6 +55,13 @@ public class GUI extends JFrame {
                 editSelectedItem();
             }
         });
+
+        generateStatsButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                generateStatistics();
+            }
+        });
         
         createMenuBar();
 
