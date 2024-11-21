@@ -9,6 +9,7 @@ public class GUI extends JFrame {
     private DefaultListModel<String> inventoryModel;
     private JList<String> inventoryList;
     private JButton moreInfoButton;
+    private JButton editButton;
     private ItemsList itemsList; 
 
     public GUI(String title, ItemsList itemsList) {
@@ -26,10 +27,12 @@ public class GUI extends JFrame {
         add(new JLabel("Inventory List:"), BorderLayout.NORTH);
         add(listScrollPane, BorderLayout.CENTER);
 
-        // Add More Info button
+        // Add Buttons
         moreInfoButton = new JButton("More Info");
+        editButton =  new JButton("Edit");
         JPanel buttonPanel = new JPanel();
         buttonPanel.add(moreInfoButton);
+        buttonPanel.add(editButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
         // Add action listener to More Info button
