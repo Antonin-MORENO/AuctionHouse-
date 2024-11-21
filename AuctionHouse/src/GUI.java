@@ -196,6 +196,12 @@ public class GUI extends JFrame {
         setListContent(itemsList.getAllItems());
     }
 
+    private void generateStatistics() {
+        String filename = "Statistics.txt";
+        itemsList.generate_stat_text_file(filename);
+        JOptionPane.showMessageDialog(this, "Statistics saved to " + filename, "Statistics Generated", JOptionPane.INFORMATION_MESSAGE);
+    }
+
     public static void main(String[] args) {
         // Create and populate ItemsList
         ItemsList itemsList = loadItemsList();
