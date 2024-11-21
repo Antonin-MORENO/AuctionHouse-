@@ -43,5 +43,13 @@ public abstract class Items {
     public double get_startingprice() {
         return starting_price;
     }
+
+    public void set_price(double price) {
+        this.starting_price = price;
+    }
+
+    public void set_condition(String condition) {
+        this.condition = condition;
+    }
     
 }
