@@ -7,6 +7,8 @@ public class GUI extends JFrame {
     private DefaultListModel<String> inventoryModel;
     private JList<String> inventoryList;
 
+    private JButton moreInfoButton;
+
     public GUI(String title) {
         super(title);
         setSize(500, 400);
@@ -20,6 +22,13 @@ public class GUI extends JFrame {
         // Add components to the frame
         add(new JLabel("Inventory List:"), BorderLayout.NORTH);
         add(listScrollPane, BorderLayout.CENTER);
+
+        // Add More Info button
+        moreInfoButton = new JButton("More Info");
+        JPanel buttonPanel = new JPanel();
+        buttonPanel.add(moreInfoButton);
+        add(buttonPanel, BorderLayout.SOUTH);
+
     }
 
     // Method to populate the list with items
