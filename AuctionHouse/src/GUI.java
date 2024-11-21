@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class GUI extends JFrame {
     private DefaultListModel<String> inventoryModel;
@@ -130,6 +132,28 @@ public class GUI extends JFrame {
         } else {
             JOptionPane.showMessageDialog(this, "Please select an item first.", "No Selection", JOptionPane.WARNING_MESSAGE);
         }
+    }
+
+
+    // Sorting methods
+    private void sortItemsByPrice() {
+        Collections.sort(itemsList.getAllItems(), new Comparator<Items>() {
+            @Override
+            public int compare(Items o1, Items o2) {
+                return Double.compare(o1.get_startingprice(), o2.get_startingprice());
+            }
+        });
+        setListContent(itemsList.getAllItems());
+    }
+
+    private void sortItemsByYear() {
+        Collections.sort(itemsList.getAllItems(), new Comparator<Items>() {
+            @Override
+            public int compare(Items o1, Items o2) {
+                return Integer.compare(o1.get_yearsoforigins().getLowEstimate(), o2.get_yearsoforigins().getLowEstimate());
+            }
+        });
+        setListContent(itemsList.getAllItems());
     }
 
     public static void main(String[] args) {
