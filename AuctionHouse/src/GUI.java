@@ -1,16 +1,19 @@
 package AuctionHouse.src;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class GUI extends JFrame {
     private DefaultListModel<String> inventoryModel;
     private JList<String> inventoryList;
-
     private JButton moreInfoButton;
+    private ItemsList itemsList; 
 
-    public GUI(String title) {
+    public GUI(String title, ItemsList itemsList) {
         super(title);
+        this.itemsList = itemsList; 
         setSize(500, 400);
         setLayout(new BorderLayout());
 
@@ -29,6 +32,13 @@ public class GUI extends JFrame {
         buttonPanel.add(moreInfoButton);
         add(buttonPanel, BorderLayout.SOUTH);
 
+        // Add action listener to More Info button
+        moreInfoButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showMoreInfo();
+            }
+        });
     }
 
     // Method to populate the list with items
@@ -42,12 +52,37 @@ public class GUI extends JFrame {
         }
     }
 
+    // Method to show more details about the selected item
+    private void showMoreInfo() {
+        int selectedIndex = inventoryList.getSelectedIndex();
+        if (selectedIndex >= 0) {
+            // Retrieve the selected item from itemsList
+            Items selectedItem = itemsList.getAllItems().get(selectedIndex);
+
+            // Display the details in a dialog
+            String details = String.format(
+                    "Type: %s\nID: %d\nPrice: %.2f€\nOwner: %s\nCondition: %s\nYear Estimate: %d-%d",
+                    selectedItem.getClass().getSimpleName(),
+                    selectedItem.get_id(),
+                    selectedItem.get_startingprice(),
+                    selectedItem.get_ownername(),
+                    selectedItem.get_condition(),
+                    selectedItem.get_yearsoforigins().getLowEstimate(),
+                    selectedItem.get_yearsoforigins().getHighEstimate()
+            );
+
+            JOptionPane.showMessageDialog(this, details, "Item Details", JOptionPane.INFORMATION_MESSAGE);
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select an item first.", "No Selection", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+
     public static void main(String[] args) {
         // Create and populate ItemsList
         ItemsList itemsList = loadItemsList();
 
         // Create and configure the main frame
-        GUI mainFrame = new GUI("Inventory Viewer");
+        GUI mainFrame = new GUI("Inventory Viewer", itemsList);
         mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainFrame.setListContent(itemsList.getAllItems()); // Populate the list with items
         mainFrame.setVisible(true);
