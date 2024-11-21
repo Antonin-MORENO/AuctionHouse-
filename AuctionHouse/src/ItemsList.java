@@ -151,6 +151,12 @@ public Items getNewestItemMiddleEstimate() {
         return new ArrayList<>(sortedItems.subList(0, Math.min(3, sortedItems.size())));
     }
 
+
+    // ItemsList.java
+    public ArrayList<Items> getAllItems() {
+        return ItemsList; 
+    }
+
     
     
     
