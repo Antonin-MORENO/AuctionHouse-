@@ -7,8 +7,6 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Locale;
 
 public class GUI extends JFrame {
@@ -95,7 +93,7 @@ public class GUI extends JFrame {
             sortByPrice.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    sortItemsByPrice();
+                    sortItems(SortingCrit.Price);
                 }
             });
     
@@ -104,7 +102,7 @@ public class GUI extends JFrame {
             sortByYear.addActionListener(new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    sortItemsByYear();
+                    sortItems(SortingCrit.Year);
                 }
             });
     
@@ -197,26 +195,13 @@ public class GUI extends JFrame {
     }
 
 
-    // Sorting methods
-    private void sortItemsByPrice() {
-        Collections.sort(itemsList.getAllItems(), new Comparator<Items>() {
-            @Override
-            public int compare(Items o1, Items o2) {
-                return Double.compare(o1.get_startingprice(), o2.get_startingprice());
-            }
-        });
+    // Sorting method
+    private void sortItems(SortingCrit criteria) {
+        itemsList.getAllItems().sort(new ItemsComparator(criteria));
         setListContent(itemsList.getAllItems());
+        
     }
-
-    private void sortItemsByYear() {
-        Collections.sort(itemsList.getAllItems(), new Comparator<Items>() {
-            @Override
-            public int compare(Items o1, Items o2) {
-                return Integer.compare(o1.get_yearsoforigins().getLowEstimate(), o2.get_yearsoforigins().getLowEstimate());
-            }
-        });
-        setListContent(itemsList.getAllItems());
-    }
+    
 
     private void generateStatistics() {
         String filename = "Statistics.txt";
