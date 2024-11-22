@@ -133,7 +133,7 @@ public class GUI extends JFrame {
 
             // Display the details in a dialog
             String details = String.format(
-                    "Type: %s\nID: %d\nPrice: %.2f€\nOwner: %s\nCondition: %s\nYear Estimate: %d-%d",
+                    "Type: %s\nID: %d\nPrice: %.2f€\nOwner: %s\nCondition: %s\nYear Estimate: %d-%d\n",
                     selectedItem.getClass().getSimpleName(),
                     selectedItem.get_id(),
                     selectedItem.get_startingprice(),
@@ -143,10 +143,50 @@ public class GUI extends JFrame {
                     selectedItem.get_yearsoforigins().getHighEstimate()
             );
 
+            if (selectedItem instanceof Coins) {
+                Coins coin = (Coins) selectedItem;
+                details += String.format(
+                        "Material: %s\nOrigin: %s\nValue: %s\n",
+                        coin.get_material(),
+                        coin.get_PlaceOfOrigins(),
+                        coin.get_value()
+                );
+            } else if (selectedItem instanceof Furniture) {
+                Furniture furniture = (Furniture) selectedItem;
+                details += String.format(
+                        "Type: %s\nStyle: %s\nMaker name: %s\nlength: %.2f\nHeight: %.2f\nDepth: %.2f\n",
+                        furniture.get_type(),
+                        furniture.get_style(),
+                        furniture.get_makername(),
+                        furniture.get_length(),
+                        furniture.get_height(),
+                        furniture.get_depth()
+                );
+            } else if (selectedItem instanceof Cars) {
+                Cars car = (Cars) selectedItem;
+                details += String.format(
+                        "Make: %s\nModel: %s\nServiced: %b\n",
+                        car.get_make(),
+                        car.get_model(),
+                        car.get_serviced()
+                );
+            } else if (selectedItem instanceof Books) {
+                Books book = (Books) selectedItem;
+                details += String.format(
+                        "Title: %s\nAuthor: %s\nEdition: %s\nPages: %d\n",
+                        book.get_title(),
+                        book.get_authorname(),
+                        book.get_edition(),
+                        book.get_genre()
+                );
+            }
+
             JOptionPane.showMessageDialog(this, details, "Item Details", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "Please select an item first.", "No Selection", JOptionPane.WARNING_MESSAGE);
         }
+
+        
     }
 
 
