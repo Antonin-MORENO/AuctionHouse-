@@ -246,7 +246,7 @@ public class GUI extends JFrame {
     
 
     private void generateStatistics() {
-        String filename = "Statistics.txt";
+        String filename = "Statistics_files//Statistics.txt";
         itemsList.generate_stat_text_file(filename);
         JOptionPane.showMessageDialog(this, "Statistics saved to " + filename, "Statistics Generated", JOptionPane.INFORMATION_MESSAGE);
     }
