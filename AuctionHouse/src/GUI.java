@@ -3,6 +3,9 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -208,6 +211,72 @@ public class GUI extends JFrame {
         itemsList.generate_stat_text_file(filename);
         JOptionPane.showMessageDialog(this, "Statistics saved to " + filename, "Statistics Generated", JOptionPane.INFORMATION_MESSAGE);
     }
+
+
+    private void saveData() {
+    String fileName = "updated_inventory.csv";
+    try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
+        for (Items item : itemsList.getAllItems()) {
+            
+            if (item instanceof Coins) {
+                Coins coin = (Coins) item;
+                String line = String.format("Coins,%s,%d,%d,%s,%.2f,%s,%s,%s\n",
+                        coin.get_condition(),
+                        coin.get_yearsoforigins().getLowEstimate(),
+                        coin.get_yearsoforigins().getHighEstimate(),
+                        coin.get_ownername(),
+                        coin.get_startingprice(),
+                        coin.get_material(),
+                        coin.get_PlaceOfOrigins(),
+                        coin.get_value());
+                writer.write(line);
+            } else if (item instanceof Furniture) {
+                Furniture furniture = (Furniture) item;
+                String line = String.format("Furniture,%s,%d,%d,%s,%.2f,%s,%s,%.2f,%.2f,%.2f\n",
+                        furniture.get_condition(),
+                        furniture.get_yearsoforigins().getLowEstimate(),
+                        furniture.get_yearsoforigins().getHighEstimate(),
+                        furniture.get_ownername(),
+                        furniture.get_startingprice(),
+                        furniture.get_type(),
+                        furniture.get_style(),
+                        furniture.get_length(),
+                        furniture.get_height(),
+                        furniture.get_depth());
+                writer.write(line);
+            } else if (item instanceof Cars) {
+                Cars car = (Cars) item;
+                String line = String.format("Cars,%s,%d,%d,%s,%.2f,%s,%s,%b\n",
+                        car.get_condition(),
+                        car.get_yearsoforigins().getLowEstimate(),
+                        car.get_yearsoforigins().getHighEstimate(),
+                        car.get_ownername(),
+                        car.get_startingprice(),
+                        car.get_make(),
+                        car.get_model(),
+                        car.get_serviced());
+                writer.write(line);
+            } else if (item instanceof Books) {
+                Books book = (Books) item;
+                String line = String.format("Books,%s,%d,%d,%s,%.2f,%s,%s,%s,%s\n",
+                        book.get_condition(),
+                        book.get_yearsoforigins().getLowEstimate(),
+                        book.get_yearsoforigins().getHighEstimate(),
+                        book.get_ownername(),
+                        book.get_startingprice(),
+                        book.get_title(),
+                        book.get_authorname(),
+                        book.get_edition(),
+                        book.get_genre());
+                writer.write(line);
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Data saved to " + fileName, "Save Successful", JOptionPane.INFORMATION_MESSAGE);
+    } catch (IOException e) {
+        JOptionPane.showMessageDialog(this, "Error saving data: " + e.getMessage(), "Save Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
+
 
     public static void main(String[] args) {
         // Create and populate ItemsList
