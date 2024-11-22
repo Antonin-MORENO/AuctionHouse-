@@ -36,4 +36,11 @@ public class ItemsListTest {
                                 "Third item's difference should be the third largest");
         }
 
+        @Test
+        @DisplayName("Empty List")
+        void testEmptyList() {
+                ArrayList<Items> top3 = itemsList.getTop3ItemsByEstimateDifference();
+                assertEquals(0, top3.size(), "Should return empty list");
+        }
+
 }
