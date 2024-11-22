@@ -70,4 +70,24 @@ public class ItemsListTest {
                 assertEquals(1, top3.size(), "Should return 1 item");
         }
 
+        @Test
+        @DisplayName("Zero Differences")
+        void testZeroDifferences() {
+                itemsList.addFurniture(new Furniture("Chair", "Modern", "ABC", 1.2, 0.8, 0.5,
+                                new YearEstimate(2000, 2000), "John", "Mint condition", 500));
+                itemsList.addFurniture(new Furniture("Table", "Classic", "XYZ", 1.5, 0.9, 0.6,
+                                new YearEstimate(2000, 2020), "Jane", "Restored", 700));
+                itemsList.addFurniture(new Furniture("Table", "Classic", "XYZ", 1.5, 0.9, 0.6,
+                                new YearEstimate(2000, 2015), "Jane", "Restored", 700));
+
+                ArrayList<Items> top3 = itemsList.getTop3ItemsByEstimateDifference();
+
+                assertEquals(20, top3.get(0).get_yearsoforigins().getDifference(),
+                                "First item's difference should be 20");
+                assertEquals(15, top3.get(1).get_yearsoforigins().getDifference(),
+                                "Second item's difference should be 15");
+                assertEquals(0, top3.get(2).get_yearsoforigins().getDifference(),
+                                "Third item's difference should be 0");
+        }
+
 }
