@@ -61,4 +61,13 @@ public class ItemsListTest {
                 assertEquals(3, top3.size(), "Should return only 3 items");
         }
 
+        @Test
+        @DisplayName("Less than 3 Items")
+        void testFewerThanThreeItems() {
+                itemsList.addFurniture(new Furniture("Chair", "Modern", "ABC", 1.2, 0.8, 0.5,
+                                new YearEstimate(1900, 2000), "John", "Mint condition", 500));
+                ArrayList<Items> top3 = itemsList.getTop3ItemsByEstimateDifference();
+                assertEquals(1, top3.size(), "Should return 1 item");
+        }
+
 }
