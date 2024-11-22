@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Locale;
 
 public class GUI extends JFrame {
     private DefaultListModel<String> inventoryModel;
@@ -231,7 +232,7 @@ public class GUI extends JFrame {
             
             if (item instanceof Coins) {
                 Coins coin = (Coins) item;
-                String line = String.format("Coins,%s,%d,%d,%s,%.2f,%s,%s,%s\n",
+                String line = String.format(Locale.US,"Coins,%s,%d,%d,%s,%.2f,%s,%s,%s\n",
                         coin.get_condition(),
                         coin.get_yearsoforigins().getLowEstimate(),
                         coin.get_yearsoforigins().getHighEstimate(),
@@ -243,7 +244,7 @@ public class GUI extends JFrame {
                 writer.write(line);
             } else if (item instanceof Furniture) {
                 Furniture furniture = (Furniture) item;
-                String line = String.format("Furniture,%s,%d,%d,%s,%.2f,%s,%s,%.2f,%.2f,%.2f\n",
+                String line = String.format(Locale.US,"Furniture,%s,%d,%d,%s,%.2f,%s,%s,%.2f,%.2f,%.2f\n",
                         furniture.get_condition(),
                         furniture.get_yearsoforigins().getLowEstimate(),
                         furniture.get_yearsoforigins().getHighEstimate(),
@@ -257,7 +258,7 @@ public class GUI extends JFrame {
                 writer.write(line);
             } else if (item instanceof Cars) {
                 Cars car = (Cars) item;
-                String line = String.format("Cars,%s,%d,%d,%s,%.2f,%s,%s,%b\n",
+                String line = String.format(Locale.US,"Cars,%s,%d,%d,%s,%.2f,%s,%s,%b\n",
                         car.get_condition(),
                         car.get_yearsoforigins().getLowEstimate(),
                         car.get_yearsoforigins().getHighEstimate(),
@@ -269,7 +270,7 @@ public class GUI extends JFrame {
                 writer.write(line);
             } else if (item instanceof Books) {
                 Books book = (Books) item;
-                String line = String.format("Books,%s,%d,%d,%s,%.2f,%s,%s,%s,%s\n",
+                String line = String.format(Locale.US,"Books,%s,%d,%d,%s,%.2f,%s,%s,%s,%s\n",
                         book.get_condition(),
                         book.get_yearsoforigins().getLowEstimate(),
                         book.get_yearsoforigins().getHighEstimate(),
