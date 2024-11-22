@@ -1,4 +1,4 @@
-package AuctionHouse.src;
+package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -8,6 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Locale;
+import AuctionHouse.*;
 
 public class GUI extends JFrame {
     private DefaultListModel<String> inventoryModel;
@@ -314,22 +315,10 @@ public class GUI extends JFrame {
     }
 }
 
-
-    public static void main(String[] args) {
-        // Create and populate ItemsList
-        ItemsList itemsList = loadItemsList();
-
-        // Create and configure the main frame
-        GUI mainFrame = new GUI("Inventory Viewer", itemsList);
-        mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        mainFrame.setListContent(itemsList.getAllItems()); // Populate the list with items
-        mainFrame.setVisible(true);
-    }
-
     // Method to load items from a CSV file
-    private static ItemsList loadItemsList() {
+    public static ItemsList loadItemsList() {
         ItemsList itemsList = new ItemsList();
-        String csvFilePath = "AuctionHouse\\src\\sample.csv"; 
+        String csvFilePath = "CSV_files\\sample.csv"; 
         Loadfile.loadFurnitureFromFile(csvFilePath, itemsList);
         return itemsList;
     }

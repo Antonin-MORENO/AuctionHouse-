@@ -1,4 +1,4 @@
-package AuctionHouse.src;
+package AuctionHouse;
 
 import java.util.ArrayList;
 import java.io.FileNotFoundException;

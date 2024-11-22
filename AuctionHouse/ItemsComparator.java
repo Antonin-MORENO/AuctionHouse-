@@ -1,4 +1,4 @@
-package AuctionHouse.src;
+package AuctionHouse;
 import java.util.Comparator;
 
 public class ItemsComparator implements Comparator<Items> {

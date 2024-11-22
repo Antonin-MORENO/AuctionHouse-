@@ -1,4 +1,4 @@
-package AuctionHouse.src;
+package AuctionHouse;
 
 public class Cars extends Items {
 
