@@ -16,6 +16,7 @@ public class GUI extends JFrame {
     private JButton moreInfoButton;
     private JButton editButton;
     private JButton generateStatsButton;
+    private JButton saveDataButton;
     private ItemsList itemsList; 
 
     public GUI(String title, ItemsList itemsList) {
@@ -37,7 +38,9 @@ public class GUI extends JFrame {
         moreInfoButton = new JButton("More Info");
         editButton =  new JButton("Edit");
         generateStatsButton = new JButton("Generate Statistics");
+        saveDataButton = new JButton("Save data");
         JPanel buttonPanel = new JPanel();
+        buttonPanel.add(saveDataButton);
         buttonPanel.add(generateStatsButton);
         buttonPanel.add(moreInfoButton);
         buttonPanel.add(editButton);
@@ -63,6 +66,14 @@ public class GUI extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 generateStatistics();
+            }
+        });
+
+
+        saveDataButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                saveData();
             }
         });
         
