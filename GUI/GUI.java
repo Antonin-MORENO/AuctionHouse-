@@ -24,6 +24,7 @@ public class GUI extends JFrame {
         this.itemsList = itemsList; 
         setSize(500, 400);
         setLayout(new BorderLayout());
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         // Initialize list model and JList
         inventoryModel = new DefaultListModel<>();
