@@ -26,6 +26,7 @@ public class GUI extends JFrame {
         setSize(500, 400);
         setLayout(new BorderLayout());
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        UIManager.put("OptionPane.cancelButtonText", "Cancel"); // put cancel instead of "Annuler"
 
         // Initialize list model and JList
         inventoryModel = new DefaultListModel<>();
