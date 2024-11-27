@@ -1,21 +1,19 @@
 package AuctionHouse;
 
-
 public abstract class Items {
-    // Atributes 
+    // Atributes
 
-    protected static int idcounter = 0; 
-    protected int id; 
+    protected static int idcounter = 0;
+    protected int id;
 
     protected YearEstimate yearEstimate;
     protected String owner_name;
     protected String condition;
     protected double starting_price;
 
+    // Constructor
 
-    // Constructor 
-
-    public Items(String owner_name, String condition, YearEstimate yearEstimate, double starting_price){
+    public Items(String owner_name, String condition, YearEstimate yearEstimate, double starting_price) {
 
         this.id = ++idcounter;
         this.yearEstimate = yearEstimate;
@@ -24,10 +22,11 @@ public abstract class Items {
         this.starting_price = starting_price;
     }
 
-    public int get_id(){
+    // get and set methods
+    public int get_id() {
         return id;
     }
-    
+
     public YearEstimate get_yearsoforigins() {
         return yearEstimate;
     }
@@ -51,5 +50,5 @@ public abstract class Items {
     public void set_condition(String condition) {
         this.condition = condition;
     }
-    
+
 }

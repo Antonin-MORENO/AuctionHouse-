@@ -1,9 +1,7 @@
 package AuctionHouse;
 
-public class Furniture extends Items{
-     // Instance variable
-
-
+public class Furniture extends Items {
+  // Attributes
 
   private String object_type;
   private String style;
@@ -12,9 +10,9 @@ public class Furniture extends Items{
   private double height;
   private double depth;
 
-
-
-  public Furniture(String object_type, String style, String maker_name, double lenght, double height, double depth, YearEstimate year_of_origins, String owner_name, String condition, double starting_price) {
+  // constructor
+  public Furniture(String object_type, String style, String maker_name, double lenght, double height, double depth,
+      YearEstimate year_of_origins, String owner_name, String condition, double starting_price) {
     super(owner_name, condition, year_of_origins, starting_price);
     this.object_type = object_type;
     this.style = style;
@@ -25,6 +23,7 @@ public class Furniture extends Items{
 
   }
 
+  // get method
   public String get_type() {
     return object_type;
   }
@@ -49,13 +48,4 @@ public class Furniture extends Items{
     return depth;
   }
 
-
-
-
-
-
-
-
-
-  
 }

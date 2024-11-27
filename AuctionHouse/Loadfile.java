@@ -5,19 +5,17 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class Loadfile {
-    
+
     public static void loadFurnitureFromFile(String filePath, ItemsList itemsList) {
 
-        
         try {
 
             File f = new File(filePath);
             Scanner scanner = new Scanner(f);
-            String[] validConditions = { "Mint condition", "Restored", "Needs restoring", "Good condition" };
+            String[] validConditions = { "Mint condition", "Restored", "Needs restoring" };
 
             while (scanner.hasNextLine()) {
 
-                
                 String inputLine = scanner.nextLine();
 
                 String[] fields = inputLine.split(",");
@@ -36,8 +34,6 @@ public class Loadfile {
                     System.exit(1);
                 }
 
-
-
                 String condition = fields[1].trim();
                 boolean isValidCondition = false;
 
@@ -48,22 +44,17 @@ public class Loadfile {
                     }
                 }
 
-                    
                 if (!isValidCondition) {
                     System.err.println("Error: Invalid condition in the input line: " + inputLine);
-                    System.exit(1); 
+                    System.exit(1);
                 }
 
-                
-                
                 String ownerName = fields[4].trim();
                 double price = Double.parseDouble(fields[5].trim());
                 int lowEstimate = Integer.parseInt(fields[2].trim());
                 int highEstimate = Integer.parseInt(fields[3].trim());
                 YearEstimate year = new YearEstimate(lowEstimate, highEstimate);
-                
-                
-                
+
                 if ("Furniture".equals(objecttype)) {
 
                     String furnitureType = fields[6].trim();
@@ -72,17 +63,15 @@ public class Loadfile {
                     double length = Double.parseDouble(fields[9].trim());
                     double height = Double.parseDouble(fields[10].trim());
                     double depth = Double.parseDouble(fields[11].trim());
-    
-                    Furniture furniture = new Furniture(furnitureType, style, makerName, length, height, depth, year, ownerName, condition, price);
-    
+
+                    Furniture furniture = new Furniture(furnitureType, style, makerName, length, height, depth, year,
+                            ownerName, condition, price);
+
                     itemsList.addFurniture(furniture);
-    
-                    
+
                 }
 
-
                 else if ("Cars".equals(objecttype)) {
-
 
                     String make = fields[6].trim();
                     String model = fields[7].trim();
@@ -91,12 +80,9 @@ public class Loadfile {
                     Cars cars = new Cars(ownerName, condition, year, price, make, model, serviced);
                     itemsList.addFurniture(cars);
 
-
                 }
 
                 else if ("Books".equals(objecttype)) {
-
-
 
                     String title = fields[6].trim();
                     String authorname = fields[7].trim();
@@ -107,10 +93,7 @@ public class Loadfile {
                     itemsList.addFurniture(books);
                 }
 
-
                 else if ("Coins".equals(objecttype)) {
-
-
 
                     String material = fields[6].trim();
                     String PlaceOfOrigins = fields[7].trim();
@@ -124,13 +107,10 @@ public class Loadfile {
 
                 else {
                     System.err.println("Error: Invalid object in the input line: " + inputLine);
-                    System.exit(1); 
+                    System.exit(1);
                 }
 
-                }
-
-                
-                
+            }
 
             scanner.close();
 
@@ -139,10 +119,7 @@ public class Loadfile {
         } catch (NumberFormatException e) {
             System.out.println("Error : wrong format in the file " + e.getMessage());
         }
-        
-        
-        }
 
-
+    }
 
 }
