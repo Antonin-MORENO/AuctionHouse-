@@ -245,7 +245,7 @@ public class GUI extends JFrame {
     }
 
     private void saveData() {
-        String fileName = "updated_inventory.csv";
+        String fileName = "CSV_files\\updated_inventory.csv";
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName))) {
             for (Items item : itemsList.getAllItems()) {
 
