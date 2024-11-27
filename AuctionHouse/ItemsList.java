@@ -15,17 +15,17 @@ public class ItemsList {
         ItemsList = new ArrayList<>();
     }
 
-    // add a furniture to the lost of furniture
+    // add a item to the lost of item
     public void addFurniture(Items item) {
         ItemsList.add(item);
     }
 
-    // get the total number of furniture in the list
+    // get the total number of items in the list
     public int get_TotalItem() {
         return ItemsList.size();
     }
 
-    // get the oldest furniture in the list
+    // get the oldest items in the list
     public Items getOldestItem() {
         if (ItemsList.isEmpty())
             return null;
@@ -39,7 +39,7 @@ public class ItemsList {
         return oldest;
     }
 
-    // get the newest furniture in the list
+    // get the newest items in the list
     public Items getNewestItem() {
         if (ItemsList.isEmpty())
             return null;
@@ -81,7 +81,7 @@ public class ItemsList {
         return newest;
     }
 
-    // get the most exepensive furniture in the list
+    // get the most exepensive items in the list
     public Items getMostExpensiveItem() {
         if (ItemsList.isEmpty())
             return null;
@@ -95,7 +95,7 @@ public class ItemsList {
         return mostExpensive;
     }
 
-    // get the least expensive furniture in the list
+    // get the least expensive items in the list
     public Items getLeastExpensiveItem() {
         if (ItemsList.isEmpty())
             return null;
@@ -191,12 +191,12 @@ public class ItemsList {
 
             // Most expensive
             Items mostexpensive = getMostExpensiveItem();
-            fw.write("Most expensive furniture : " + mostexpensive.get_id() + " which costs "
+            fw.write("Most expensive item : " + mostexpensive.get_id() + " which costs "
                     + mostexpensive.get_startingprice() + "€, id : " + mostexpensive.get_id() + "\n");
 
             // Least expensive
             Items leastexpensive = getLeastExpensiveItem();
-            fw.write("Least expensive furniture : " + leastexpensive.get_id() + " which costs "
+            fw.write("Least expensive item : " + leastexpensive.get_id() + " which costs "
                     + leastexpensive.get_startingprice() + "€, id : " + leastexpensive.get_id() + "\n");
 
             // Average starting price
@@ -221,7 +221,7 @@ public class ItemsList {
                 }
             }
 
-            fw.write("Breakdown of Furniture items by condition:\n");
+            fw.write("Breakdown of items by condition:\n");
             fw.write("Mint: " + mintConditionCount);
             fw.write("\nRestored: " + restoredCount);
             fw.write("\nNeeds Restoring: " + needsRestoringCount);
